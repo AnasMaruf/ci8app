@@ -3,13 +3,14 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2 class="mt-4">Form Tambah Data Mahasiswa</h2>
-            <?= csrf_field(); ?>
-            <form action="/komik/save" method="POST" enctype="multipart/form-data">
+            <h2 class="my-3">Form Ubah Data Komik</h2>
+            <form action="/komik/update/<?= $komik['id']; ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group row">
+                    <input type="hidden" name="slug" value="<?= $komik['slug']; ?>">
+                    <input type="hidden" name="sampulLama" value="<?= $komik['sampul']; ?>">
                     <label for="judul" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= ($validation->hasError('judul')) ? 'is-invalid' : ''; ?>" id="judul" name="judul" autofocus autocomplete="off" value="<?= old('judul'); ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('judul')) ? 'is-invalid' : ''; ?>" id="judul" name="judul" autofocus autocomplete="off" value="<?= (old('judul')) ? old('judul') : $komik['judul']; ?>">
                         <div id="validationServer03Feedback" class="invalid-feedback">
                             <?= $validation->getError('judul'); ?>
                         </div>
@@ -18,19 +19,19 @@
                 <div class="form-group row">
                     <label for="penulis" class="col-sm-2 col-form-label">Penulis</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="penulis" name="penulis" autofocus autocomplete="off" value="<?= old('penulis'); ?>">
+                        <input type="text" class="form-control" id="penulis" name="penulis" autofocus autocomplete="off" value="<?= (old('penulis')) ? old('penulis') : $komik['penulis']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="penerbit" class="col-sm-2 col-form-label">Penerbit</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="penerbit" name="penerbit" autofocus autocomplete="off" value="<?= old('penerbit'); ?>">
+                        <input type="text" class="form-control" id="penerbit" name="penerbit" autofocus autocomplete="off" value="<?= (old('penerbit')) ? old('penerbit') : $komik['penerbit']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="sampul" class="col-sm-2 col-form-label">Sampul</label>
                     <div class="col-sm-2">
-                        <img src="/img/default.jpg" class="img-thumbnail img-preview">
+                        <img src="/img/<?= $komik['sampul']; ?>" class="img-thumbnail img-preview">
                     </div>
                     <div class="col-sm-8">
                         <div class="custom-file">
@@ -38,13 +39,13 @@
                             <div id="validationServer03Feedback" class="invalid-feedback">
                                 <?= $validation->getError('sampul'); ?>
                             </div>
-                            <label class="custom-file-label" for="sampul">Pilih Gambar...</label>
+                            <label class="custom-file-label" for="sampul"><?= $komik['sampul']; ?></label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Tambah Data</button>
+                        <button type="submit" class="btn btn-primary">Ubah Data</button>
                     </div>
                 </div>
             </form>
