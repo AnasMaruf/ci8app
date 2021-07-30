@@ -8,6 +8,7 @@
             <div class="navbar-nav">
                 <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-link" href="/komik">Komik</a>
+                <a class="nav-link" href="/orang">Orang</a>
                 <a class="nav-link" href="/pages/contact">Contact</a>
                 <a class="nav-link" href="/pages/about">About</a>
             </div>
